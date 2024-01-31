@@ -5,6 +5,7 @@ import './App.css';
 function App() {
 
   useEffect(()=>{
+    console.log(Notification.permission)
     Notification.requestPermission().then();
   },[])
   
