@@ -36,5 +36,14 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script>
+      return;
+      navigator.serviceWorker.register('sw.js')
+      .then(res=>{
+        console.log('서비스워커 등록 완료!')
+        console.log(res)
+      })
+    </script>
   </body>
 </html>
