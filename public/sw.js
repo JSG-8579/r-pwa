@@ -15,7 +15,7 @@ self.addEventListener('message', (event)=>{
     const option = {
         body: event.data.message,
         icon:'', //제목옆에 작은 원형이미지
-        image:'', //내용 썸네일
+        image:'./icon/favicon-196x196.png', //내용 썸네일
         badge:'',
         vibrate:[200, 100, 300], //진동울리는 간격
         actions:[
