@@ -88,21 +88,23 @@ self.addEventListener('message', (event) => {
 
 
 self.addEventListener('notificationclick', (event) => {
-  console.log(event.action)
-  console.log(clients)
-  self.clients.matchAll().then(function (clientList) {
+  // console.log(event.action)
+  // console.log(clients)
+  event.waitUntil(
+    self.clients.matchAll().then(function (clientList) {
 
-    if (event.action == 'open') {
-      //자세히보기
-      event.waitUntil(self.clients.claim())
+      if (event.action == 'open') {
+        //자세히보기
+        // event.waitUntil(self.clients.claim())
 
-      clients.openWindow('https://naver.com')
-    } else {
-      //닫기
-      event.notification.close();
-    }
+        return self.clients.openWindow('https://naver.com')
+      } else {
+        //닫기
+        return event.notification.close();
+      }
 
-  })
+    })
+  );
 
 });
 
