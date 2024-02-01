@@ -74,7 +74,7 @@ self.addEventListener('message', (event) => {
   const option = {
     body: event.data.message,
     icon: '', //제목옆에 작은 원형이미지
-    image: './icon/favicon-196x196.png', //내용 썸네일
+    image: '', //내용 썸네일
     badge: '',
     vibrate: [200, 100, 300], //진동울리는 간격
     actions: [
@@ -92,7 +92,7 @@ self.addEventListener('notificationclick', (event) => {
   // console.log(clients)
   event.waitUntil(
     self.clients.matchAll().then(function (clientList) {
-
+      console.log(clientList)
       if (event.action == 'open') {
         //자세히보기
         // event.waitUntil(self.clients.claim())
