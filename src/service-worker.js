@@ -88,8 +88,8 @@ self.addEventListener('message', (event)=>{
 
 
 self.addEventListener('notificationclick', (event)=>{
-  console.log(event.action)
-  console.log(clients)
+  // console.log(event.action)
+  // console.log(clients)
   if(event.action == 'open'){
       //자세히보기
       clients.openWindow('https://naver.com')
