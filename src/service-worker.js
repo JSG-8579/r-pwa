@@ -92,7 +92,7 @@ self.addEventListener('notificationclick', (event)=>{
   // console.log(clients)
   if(event.action == 'open'){
       //자세히보기
-      clients.openWindow('https://naver.com')
+      // clients.openWindow('https://naver.com')
   }else{
       //닫기
       event.notification.close();
