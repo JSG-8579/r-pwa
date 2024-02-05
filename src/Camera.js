@@ -30,7 +30,7 @@ function Camera(props) {
             <img src={preImage} />
             <input type="file" name="photo" onChange={file} multiple />
             <Webcam
-            ref={webcam}
+                ref={webcam}
                 audio={false}
                 screenshotFormat="image/jpeg"
                 width="100%"
@@ -40,9 +40,12 @@ function Camera(props) {
                 onClick={capture}>
                 Capture photo
             </button>
-            <img src={webcamImg}/>
-            {webcamImg}
-
+            {
+                webcamImg && <div>
+                    <img src={webcamImg} />
+                    {webcamImg}
+                </div>
+            }
         </div>
     );
 }
