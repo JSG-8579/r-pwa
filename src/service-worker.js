@@ -99,10 +99,18 @@ registerRoute(
 //   }
 // });
 
-self.addEventListener('message', (event) => {
+self.addEventListener('install', (event)=>{
+  event.waitUntil(self.skipWaiting())
+})
+self.addEventListener('activate', (event)=>{
+  event.waitUntil(self.clients.claim())
+})
+
+self.addEventListener('push', (event) => {
+  const data = JSON.parse(event.data.text());
   console.log('엣..? 메시지가', event.data)
   const option = {
-    body: event.data.message,
+    body: data.msg,
     icon: '', //제목옆에 작은 원형이미지
     image: './icon/favicon-196x196.png', //내용 썸네일
     badge: '',
@@ -110,10 +118,11 @@ self.addEventListener('message', (event) => {
     actions: [
       { action: 'open', title: '자세히보기' },
       { action: 'close', title: '닫기' },
-    ]
-  }
+    ],
+    tag:'abc'
 
-  self.registration.showNotification('title', option);
+  }
+  event.waitUntil(self.registration.showNotification('title', option));
 })
 
 
@@ -137,5 +146,6 @@ self.addEventListener('notificationclick', (event) => {
   );
 
 });
+
 
 // Any other custom service worker logic can go here.
