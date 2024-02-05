@@ -22,6 +22,7 @@ function Camera(props) {
 
     const capture = () => {
         const imgSrc = webcam.current.getScreenshot();
+        console.log(imgSrc)
         setWebcamImg(imgSrc)
     }
     return (
@@ -35,17 +36,16 @@ function Camera(props) {
                 screenshotFormat="image/jpeg"
                 width="100%"
                 height="auto"
+                // user(전면) / environment(후면)
+                videoConstraints={{facingMode:'user'}}
+                // videoConstraints={{facingMode:{exact: "environment"}}}
             />
             <button
                 onClick={capture}>
                 Capture photo
             </button>
-            {
-                webcamImg && <div>
-                    <img src={webcamImg} />
-                    {webcamImg}
-                </div>
-            }
+
+            <img src={webcamImg} width="300"/>
         </div>
     );
 }
